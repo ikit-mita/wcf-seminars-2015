@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBooksLogic.cs" />
+    <Compile Include="IBusinessLogic.cs" />
+    <Compile Include="IOrdersLogic.cs" />
     <Compile Include="IUsersLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -48,6 +50,10 @@
     <ProjectReference Include="..\BookStore.Model\BookStore.Model.csproj">
       <Project>{236EC6F3-DAD6-4A61-8328-94C5780F4ADF}</Project>
       <Name>BookStore.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mita.Core\Mita.Core.csproj">
+      <Project>{87FA3037-FA11-43DF-B91B-8520331D5D35}</Project>
+      <Name>Mita.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mita.DataAccess\Mita.DataAccess.csproj">
       <Project>{B86CC962-B1B9-4763-A348-DB88EF289853}</Project>

@@ -4,10 +4,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Threading.Tasks;
-using BookStore.DataAccess;
+using BookStore.BusinessLogic;
 using BookStore.Model;
 using Mita.Core;
-using Mita.DataAccess;
 using Mita.Mvvm;
 
 namespace BookStore.PayDesk.ViewModels
@@ -31,7 +30,13 @@ namespace BookStore.PayDesk.ViewModels
         }
 
         [Import]
-        private IRepositoryProvider RepositoryProvider { get; set; }
+        private IUsersLogic UsersLogic { get; set; }
+
+        [Import]
+        private IBooksLogic BooksLogic { get; set; }
+
+        [Import]
+        private IOrdersLogic OrdersLogic { get; set; }
 
         public Order Order
         {
@@ -120,7 +125,6 @@ namespace BookStore.PayDesk.ViewModels
                         OrderedBooks = new ObservableCollection<OrderedBook>()
                     };
 
-                RepositoryProvider.GetRepository<Order>().Add(Order);
                 ReloadCustomers();
                 ReloadBooks();
             }
@@ -129,39 +133,26 @@ namespace BookStore.PayDesk.ViewModels
         protected override void OnClosed()
         {
             base.OnClosed();
-            RepositoryProvider.Dispose();
+            UsersLogic.Dispose();
+            BooksLogic.Dispose();
+            OrdersLogic.Dispose();
         }
 
         private void Save()
         {
             using (StartOperation())
             {
-                var bookAmountRepository = RepositoryProvider.GetRepository<BookAmount>();
-                foreach (var orderedBook in Order.OrderedBooks)
+                var validationMessage = OrdersLogic.ValidateOrder(Order, _employee.BranchId);
+                if (!validationMessage.IsNullOrEmpty())
                 {
-                    var bookAmount = bookAmountRepository.GetAll()
-                        .Where(ba => ba.BookId == orderedBook.BookId)
-                        .First(ba => ba.BranchId == _employee.BranchId);
-
-                    if (orderedBook.Amount > bookAmount.Amount)
-                    {
-                        ErrorMessage = "Max amount for '{0}' is {1}".FormatWith(orderedBook.Book.Title, bookAmount.Amount);
-                        return;
-                    }
-                }
-
-                foreach (var orderedBook in Order.OrderedBooks)
-                {
-                    var bookAmount = bookAmountRepository.GetAll()
-                        .Where(ba => ba.BookId == orderedBook.BookId)
-                        .First(ba => ba.BranchId == _employee.BranchId);
-                    bookAmount.Amount -= orderedBook.Amount;
+                    ErrorMessage = validationMessage;
+                    return;
                 }
 
                 Order.Date = DateTime.Now;
                 Order.Customer = Customer;
+                OrdersLogic.SaveOrder(Order, _employee.BranchId);
 
-                RepositoryProvider.SaveChanges();
                 Close(true);
             }
 
@@ -169,23 +160,12 @@ namespace BookStore.PayDesk.ViewModels
 
         private void ReloadCustomers()
         {
-            Customers = RepositoryProvider.GetRepository<Customer>().GetAll().ToList();
+            Customers = UsersLogic.GetAllCustomers();
         }
 
         private void ReloadBooks()
         {
-            var query = RepositoryProvider.GetRepository<BookAmount>()
-                .GetAll(ba => ba.Book)
-                .Where(ba => ba.Amount > 0)
-                .Where(ba => ba.BranchId == _employee.BranchId);
-
-            if (!ISBN.IsNullOrEmpty())
-            {
-                var isbn = ISBN.Trim();
-                query = query.Where(ba => ba.Book.ISBN.Contains(isbn));
-            }
-
-            AvailableBooks = query.ToList();
+            AvailableBooks = BooksLogic.SearchBooks(_employee.BranchId, ISBN.TrimSafe(), onHandOnly: true);
         }
 
         private void AddBook(BookAmount bookAmount)

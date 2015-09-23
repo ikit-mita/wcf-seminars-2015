@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
-using System.Text;
 
-namespace BookStore.DataAccess
+namespace BookStore.Model
 {
     /// <summary>
     /// Salted password hashing with PBKDF2-SHA1.

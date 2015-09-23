@@ -3,7 +3,6 @@ using System.ComponentModel.Composition;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using BookStore.BusinessLogic;
-using BookStore.DataAccess;
 using BookStore.Model;
 using Mita.Core;
 using Mita.Mvvm;

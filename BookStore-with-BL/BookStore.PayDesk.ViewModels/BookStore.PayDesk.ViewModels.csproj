@@ -59,10 +59,6 @@
       <Project>{f9ada87e-8203-455e-b43d-fd242fbc70cd}</Project>
       <Name>BookStore.BusinessLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BookStore.DataAccess\BookStore.DataAccess.csproj">
-      <Project>{4F84FF5D-B006-4A24-9B42-E2D190FA7C01}</Project>
-      <Name>BookStore.DataAccess</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BookStore.Model\BookStore.Model.csproj">
       <Project>{236EC6F3-DAD6-4A61-8328-94C5780F4ADF}</Project>
       <Name>BookStore.Model</Name>
@@ -70,10 +66,6 @@
     <ProjectReference Include="..\Mita.Core\Mita.Core.csproj">
       <Project>{87FA3037-FA11-43DF-B91B-8520331D5D35}</Project>
       <Name>Mita.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mita.DataAccess\Mita.DataAccess.csproj">
-      <Project>{B86CC962-B1B9-4763-A348-DB88EF289853}</Project>
-      <Name>Mita.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\Mita.Mvvm\Mita.Mvvm.csproj">
       <Project>{213D4459-1FAF-46C7-961E-F0AE9BF8513C}</Project>

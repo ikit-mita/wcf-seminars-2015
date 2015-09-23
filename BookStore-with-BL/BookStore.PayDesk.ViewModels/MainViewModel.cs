@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using BookStore.DataAccess;
+using BookStore.BusinessLogic;
 using BookStore.Model;
 using Mita.Core;
-using Mita.DataAccess;
 using Mita.Mvvm;
 
 namespace BookStore.PayDesk.ViewModels
@@ -25,11 +21,14 @@ namespace BookStore.PayDesk.ViewModels
         public MainViewModel()
         {
             SearchCommand = new DelegateCommand(() => Task.Run((Action)Search));
-            CreateOrderCommand = new DelegateCommand((Action)CreateOrder);
+            CreateOrderCommand = new DelegateCommand(CreateOrder);
         }
 
         [Import(RequiredCreationPolicy = CreationPolicy.NonShared)]
-        private IRepositoryProvider RepositoryProvider { get; set; }
+        private IUsersLogic UsersLogic { get; set; }
+
+        [Import(RequiredCreationPolicy = CreationPolicy.NonShared)]
+        private IBooksLogic BooksLogic { get; set; }
 
         public string SearchString
         {
@@ -88,9 +87,7 @@ namespace BookStore.PayDesk.ViewModels
         {
             using (StartOperation())
             {
-                Employee = RepositoryProvider.GetRepository<Employee>()
-                    .GetAll(e => e.Branch, e => e.User)
-                    .First(e => e.Id == userId);
+                Employee = UsersLogic.GetEmployeeByUserId(userId);
                 Title = "Booko: " + Employee.Branch.Name;
             }
         }
@@ -99,26 +96,13 @@ namespace BookStore.PayDesk.ViewModels
         {
             using (StartOperation())
             {
-                var query = RepositoryProvider.GetRepository<BookAmount>()
-                    .GetAll(ba => ba.Book.Writers)
-                    .Where(ba => ba.BranchId == Employee.BranchId);
-
-                if (!ISBN.IsNullOrEmpty())
-                {
-                    query = query.Where(ba => ba.Book.ISBN.Contains(ISBN));
-                }
-                else if (!SearchString.IsNullOrEmpty())
-                {
-                    query = query.Where(ba => ba.Book.Title.Contains(SearchString) ||
-                                              ba.Book.Writers.Any(w => w.LastName.Contains(SearchString)));
-                }
-                else
+                if (ISBN.IsNullOrEmpty() && SearchString.IsNullOrEmpty())
                 {
                     Amounts = new BookAmount[] { };
                     return;
                 }
 
-                Amounts = query.ToList();
+                Amounts = BooksLogic.SearchBooks(Employee.BranchId, ISBN, SearchString);
             }
         }
 
@@ -137,8 +121,8 @@ namespace BookStore.PayDesk.ViewModels
 
             if (orderEditViewModel != null && orderEditViewModel.ModalResult)
             {
-                RepositoryProvider.Dispose();
-                RepositoryProvider = ServiceLocator.GetInstance<IRepositoryProvider>();
+                BooksLogic.Dispose();
+                BooksLogic = ServiceLocator.GetInstance<IBooksLogic>();
                 Search();
             }
         }
@@ -146,7 +130,8 @@ namespace BookStore.PayDesk.ViewModels
         protected override void OnClosed()
         {
             base.OnClosed();
-            RepositoryProvider.Dispose();
+            UsersLogic.Dispose();
+            BooksLogic.Dispose();
         }
     }
 }
