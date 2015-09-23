@@ -2,11 +2,12 @@
 using System.ComponentModel.Composition;
 using System.Linq;
 using BookStore.Model;
-using Mita.Core;
+using Mita;
 
 namespace BookStore.BusinessLogic.DB
 {
     [Export(typeof(IOrdersLogic))]
+    [PartCreationPolicy(CreationPolicy.NonShared)]
     public class OrdersLogic : BusinessLogicBase, IOrdersLogic
     {
         public string ValidateOrder(Order order, int branchId)

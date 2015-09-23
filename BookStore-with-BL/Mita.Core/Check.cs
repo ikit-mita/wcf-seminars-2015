@@ -1,6 +1,7 @@
 ﻿using System;
+using Mita;
 
-namespace Mita.Core
+namespace Mita
 {
     public static class Check
     {

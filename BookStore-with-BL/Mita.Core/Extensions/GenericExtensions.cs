@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace Mita.Core
+namespace Mita
 {
     public static class GenericExtensions
     {

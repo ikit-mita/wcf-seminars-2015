@@ -3,11 +3,11 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using BookStore.DataAccess;
 using BookStore.Model;
-using Mita.DataAccess;
 
 namespace BookStore.BusinessLogic.DB
 {
     [Export(typeof(IUsersLogic))]
+    [PartCreationPolicy(CreationPolicy.NonShared)]
     public class UsersLogic : BusinessLogicBase, IUsersLogic
     {
         public User GetUserByLogin(string login)

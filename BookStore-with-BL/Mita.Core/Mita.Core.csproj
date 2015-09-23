@@ -7,7 +7,7 @@
     <ProjectGuid>{87FA3037-FA11-43DF-B91B-8520331D5D35}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mita.Core</RootNamespace>
+    <RootNamespace>Mita</RootNamespace>
     <AssemblyName>Mita.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,18 +46,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Check.cs" />
-    <Compile Include="DomainObject.cs" />
+    <Compile Include="DataAccess\DomainObject.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Extensions\GenericExtensions.cs" />
     <Compile Include="Extensions\ICollectionExtensions.cs" />
     <Compile Include="Extensions\IDictionaryExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
-    <Compile Include="FullNamedDomainObject.cs" />
-    <Compile Include="IDomainObject.cs" />
-    <Compile Include="NamedDomainObject.cs" />
+    <Compile Include="DataAccess\FullNamedDomainObject.cs" />
+    <Compile Include="DataAccess\IDomainObject.cs" />
+    <Compile Include="DataAccess\NamedDomainObject.cs" />
+    <Compile Include="PasswordManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="TitledDomainObject.cs" />
+    <Compile Include="DataAccess\TitledDomainObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using Mita.Core;
+using Mita;
 
 namespace Mita.Mvvm
 {

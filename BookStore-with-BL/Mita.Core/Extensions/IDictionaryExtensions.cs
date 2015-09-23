@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Mita.Core
+namespace Mita
 {
     /// <summary>
     /// Extension methods for IDictionary<TKey, TValue> interface.

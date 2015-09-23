@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Mita;
 
-namespace Mita.Core
+namespace Mita
 {
     public static class ExceptionExtensions
     {

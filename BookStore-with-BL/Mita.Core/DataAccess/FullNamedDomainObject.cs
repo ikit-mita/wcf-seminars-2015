@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using Mita.Core;
+using Mita;
 
 namespace Mita.DataAccess
 {

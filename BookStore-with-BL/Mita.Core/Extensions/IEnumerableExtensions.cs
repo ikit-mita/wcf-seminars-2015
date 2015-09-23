@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Mita.Core
+namespace Mita
 {
     public static class IEnumerableExtensions
     {

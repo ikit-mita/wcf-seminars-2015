@@ -3,11 +3,12 @@ using System.ComponentModel.Composition;
 using System.Linq;
 using BookStore.DataAccess;
 using BookStore.Model;
-using Mita.Core;
+using Mita;
 
 namespace BookStore.BusinessLogic.DB
 {
     [Export(typeof(IBooksLogic))]
+    [PartCreationPolicy(CreationPolicy.NonShared)]
     public class BooksLogic : BusinessLogicBase, IBooksLogic
     {
         public List<BookAmount> SearchBooks(int branchId, string isbn = null, string searchString = null, bool onHandOnly = false)

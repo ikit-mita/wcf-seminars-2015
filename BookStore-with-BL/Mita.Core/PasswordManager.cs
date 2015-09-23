@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 
-namespace BookStore.Model
+namespace Mita
 {
     /// <summary>
     /// Salted password hashing with PBKDF2-SHA1.

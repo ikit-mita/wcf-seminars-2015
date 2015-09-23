@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using BookStore.BusinessLogic;
 using BookStore.Model;
-using Mita.Core;
+using Mita;
 using Mita.Mvvm;
 
 namespace BookStore.PayDesk.ViewModels
