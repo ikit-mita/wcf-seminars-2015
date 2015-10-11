@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:9554/BooksWcfService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BookStore.Model" />
+  <xs:element name="SearchBooks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="branchId" type="xs:int" />
+        <xs:element minOccurs="0" name="isbn" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="searchString" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="onHandOnly" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SearchBooksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BookStore.Model" minOccurs="0" name="SearchBooksResult" nillable="true" type="q1:ArrayOfBookAmount" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

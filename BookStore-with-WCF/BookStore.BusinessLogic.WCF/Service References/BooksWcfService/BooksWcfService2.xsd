@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/BookStore.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/BookStore.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:9554/BooksWcfService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Mita.DataAccess" />
+  <xs:complexType name="ArrayOfBookAmount">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BookAmount" nillable="true" type="tns:BookAmount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBookAmount" nillable="true" type="tns:ArrayOfBookAmount" />
+  <xs:complexType name="BookAmount">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/Mita.DataAccess" base="q1:DomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Amount" type="xs:int" />
+          <xs:element minOccurs="0" name="Book" nillable="true" type="tns:Book" />
+          <xs:element minOccurs="0" name="BookId" type="xs:int" />
+          <xs:element minOccurs="0" name="Branch" nillable="true" type="tns:Branch" />
+          <xs:element minOccurs="0" name="BranchId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BookAmount" nillable="true" type="tns:BookAmount" />
+  <xs:complexType name="Book">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/Mita.DataAccess" base="q2:TitledDomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Amounts" nillable="true" type="tns:ArrayOfBookAmount" />
+          <xs:element minOccurs="0" name="Category" nillable="true" type="tns:BookCategory" />
+          <xs:element minOccurs="0" name="CategoryId" type="xs:int" />
+          <xs:element minOccurs="0" name="ISBN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PublishYear" type="xs:int" />
+          <xs:element minOccurs="0" name="Writers" nillable="true" type="tns:ArrayOfWriter" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Book" nillable="true" type="tns:Book" />
+  <xs:complexType name="BookCategory">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/Mita.DataAccess" base="q3:NamedDomainObject">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BookCategory" nillable="true" type="tns:BookCategory" />
+  <xs:complexType name="ArrayOfWriter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Writer" nillable="true" type="tns:Writer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWriter" nillable="true" type="tns:ArrayOfWriter" />
+  <xs:complexType name="Writer">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/Mita.DataAccess" base="q4:FullNamedDomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Books" nillable="true" type="tns:ArrayOfBook" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Writer" nillable="true" type="tns:Writer" />
+  <xs:complexType name="ArrayOfBook">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Book" nillable="true" type="tns:Book" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBook" nillable="true" type="tns:ArrayOfBook" />
+  <xs:complexType name="Branch">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/Mita.DataAccess" base="q5:NamedDomainObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Branch" nillable="true" type="tns:Branch" />
+</xs:schema>

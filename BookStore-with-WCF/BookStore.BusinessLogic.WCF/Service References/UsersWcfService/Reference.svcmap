@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="14d1284c-be07-416b-b46a-54e51a7c975a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9554/UsersWcfService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="UsersWcfService.xsd" MetadataType="Schema" ID="f1c2c18f-980c-49ad-a7e7-bd5cd380be1b" SourceId="1" SourceUrl="http://localhost:9554/UsersWcfService.svc?xsd=xsd2" />
+    <MetadataFile FileName="UsersWcfService1.xsd" MetadataType="Schema" ID="af8a298d-7291-4b98-b48c-8b9309d8a3c2" SourceId="1" SourceUrl="http://localhost:9554/UsersWcfService.svc?xsd=xsd1" />
+    <MetadataFile FileName="UsersWcfService2.xsd" MetadataType="Schema" ID="abeb0839-8725-4042-a32a-0cbf3553820d" SourceId="1" SourceUrl="http://localhost:9554/UsersWcfService.svc?xsd=xsd0" />
+    <MetadataFile FileName="UsersWcfService.wsdl" MetadataType="Wsdl" ID="75f2de9c-66eb-4bf2-b82b-9404734150a2" SourceId="1" SourceUrl="http://localhost:9554/UsersWcfService.svc?wsdl" />
+    <MetadataFile FileName="UsersWcfService.disco" MetadataType="Disco" ID="f07e24d5-0e48-4607-9fe0-c71bea442f91" SourceId="1" SourceUrl="http://localhost:9554/UsersWcfService.svc?disco" />
+    <MetadataFile FileName="UsersWcfService3.xsd" MetadataType="Schema" ID="9d120b5f-9735-4146-9ffd-5512cda21869" SourceId="1" SourceUrl="http://localhost:9554/UsersWcfService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
