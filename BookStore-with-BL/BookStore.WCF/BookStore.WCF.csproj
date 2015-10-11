@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BookStore.WCF</RootNamespace>
     <AssemblyName>BookStore.WCF</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <UseIISExpress>true</UseIISExpress>
@@ -21,6 +21,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,21 +43,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Mef.CommonServiceLocator, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CommonServiceLocator.MefAdapter.1.0\lib\Microsoft.Mef.CommonServiceLocator.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
@@ -82,43 +76,12 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BookStore.BusinessLogic.DB\BookStore.BusinessLogic.DB.csproj">
-      <Project>{a51e5bea-0beb-4b3f-be41-fa54d442bd5c}</Project>
-      <Name>BookStore.BusinessLogic.DB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BookStore.BusinessLogic\BookStore.BusinessLogic.csproj">
-      <Project>{f9ada87e-8203-455e-b43d-fd242fbc70cd}</Project>
-      <Name>BookStore.BusinessLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BookStore.DataAccess\BookStore.DataAccess.csproj">
-      <Project>{4f84ff5d-b006-4a24-9b42-e2d190fa7c01}</Project>
-      <Name>BookStore.DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BookStore.Model\BookStore.Model.csproj">
-      <Project>{236ec6f3-dad6-4a61-8328-94c5780f4adf}</Project>
-      <Name>BookStore.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mita.Core\Mita.Core.csproj">
-      <Project>{87fa3037-fa11-43df-b91b-8520331d5d35}</Project>
-      <Name>Mita.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mita.DataAccess.EF\Mita.DataAccess.EF.csproj">
-      <Project>{bcb128d7-87d3-46c7-b242-e30f41aa51da}</Project>
-      <Name>Mita.DataAccess.EF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mita.DataAccess\Mita.DataAccess.csproj">
-      <Project>{b86cc962-b1b9-4763-a348-db88ef289853}</Project>
-      <Name>Mita.DataAccess</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

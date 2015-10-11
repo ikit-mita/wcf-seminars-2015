@@ -1,9 +1,5 @@
 ﻿using System;
-using System.ComponentModel.Composition;
-using System.ComponentModel.Composition.Hosting;
 using System.Web;
-using Microsoft.Mef.CommonServiceLocator;
-using Microsoft.Practices.ServiceLocation;
 
 namespace BookStore.WCF
 {
@@ -12,14 +8,14 @@ namespace BookStore.WCF
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            var assembly = new AssemblyCatalog(typeof(Global).Assembly);
-            var catalog = new AggregateCatalog();
-            catalog.Catalogs.Add(assembly);
-            catalog.Catalogs.Add(new DirectoryCatalog("bin"));
-            var container = new CompositionContainer(catalog);
-            var mefServiceLocator = new MefServiceLocator(container);
-            ServiceLocator.SetLocatorProvider(() => mefServiceLocator);
-            container.ComposeExportedValue<IServiceLocator>(mefServiceLocator);
+            //var assembly = new AssemblyCatalog(typeof(Global).Assembly); //this is how to add curent assembly
+            //var catalog = new AggregateCatalog();
+            //catalog.Catalogs.Add(assembly);
+            //catalog.Catalogs.Add(new DirectoryCatalog("bin")); //this is where our DLLs are located. "." is for WPF app, "bin" is for WEB app
+            //var container = new CompositionContainer(catalog);
+            //var mefServiceLocator = new MefServiceLocator(container);
+            //ServiceLocator.SetLocatorProvider(() => mefServiceLocator);
+            //container.ComposeExportedValue<IServiceLocator>(mefServiceLocator);
         }
 
         protected void Session_Start(object sender, EventArgs e)
