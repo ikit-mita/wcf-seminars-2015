@@ -23,7 +23,8 @@ namespace BookStore.WCF
 
         public List<BookAmount> SearchBooks(int branchId, string isbn = null, string searchString = null, bool onHandOnly = false)
         {
-            return BooksLogic.SearchBooks(branchId, isbn, searchString, onHandOnly);
+            var searchBooks = BooksLogic.SearchBooks(branchId, isbn, searchString, onHandOnly);
+            return searchBooks;
         }
 
         public void Dispose()

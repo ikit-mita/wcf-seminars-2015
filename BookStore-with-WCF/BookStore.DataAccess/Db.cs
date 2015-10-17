@@ -6,7 +6,10 @@ namespace BookStore.DataAccess
 {
     public class Db : DbContext
     {
-        public Db() : base("BookStoreDb") { }
+        public Db() : base("BookStoreDb")
+        {
+            Configuration.ProxyCreationEnabled = false;
+        }
 
         public IDbSet<User> Users { get; set; }
         public IDbSet<Employee> Employees { get; set; }
