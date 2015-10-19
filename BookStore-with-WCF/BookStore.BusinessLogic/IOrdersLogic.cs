@@ -1,10 +1,11 @@
-﻿using BookStore.Model;
+﻿using System.Collections.Generic;
+using BookStore.Model;
 
 namespace BookStore.BusinessLogic
 {
     public interface IOrdersLogic : IBusinessLogic
     {
-        string ValidateOrder(Order order, int branchId);
-        void SaveOrder(Order order, int branchId);
+        string ValidateOrder(int branchId, List<OrderedBookDescription> orderedBooks);
+        Order SaveOrder(int branchId, int customerId, int employeeId, List<OrderedBookDescription> orderedBooks);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using BookStore.BusinessLogic;
@@ -20,14 +21,15 @@ namespace BookStore.WCF
             container.ComposeParts(this);
         }
 
-        public string ValidateOrder(Order order, int branchId)
+        public string ValidateOrder(int branchId, List<OrderedBookDescription> orderedBooks)
         {
-            return OrdersLogic.ValidateOrder(order, branchId);
+            return OrdersLogic.ValidateOrder(branchId, orderedBooks);
         }
 
-        public void SaveOrder(Order order, int branchId)
+        public Order SaveOrder(int branchId, int customerId, int employeeId, List<OrderedBookDescription> orderedBooks)
         {
-            OrdersLogic.SaveOrder(order, branchId);
+            var order = OrdersLogic.SaveOrder(branchId, customerId, employeeId, orderedBooks);
+            return order;
         }
 
         public void Dispose()

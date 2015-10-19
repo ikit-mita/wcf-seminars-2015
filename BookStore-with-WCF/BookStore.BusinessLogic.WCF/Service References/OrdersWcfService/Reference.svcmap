@@ -28,6 +28,7 @@
     <MetadataFile FileName="OrdersWcfService1.xsd" MetadataType="Schema" ID="cabbd7a4-5766-4b8c-8a44-5a54fb3a1c63" SourceId="1" SourceUrl="http://localhost:9554/OrdersWcfService.svc?xsd=xsd1" />
     <MetadataFile FileName="OrdersWcfService.disco" MetadataType="Disco" ID="b42145cb-9b6b-451a-87f6-3da61c67b8f0" SourceId="1" SourceUrl="http://localhost:9554/OrdersWcfService.svc?disco" />
     <MetadataFile FileName="OrdersWcfService2.xsd" MetadataType="Schema" ID="f885a407-30e2-40a5-9533-635606a8bf5e" SourceId="1" SourceUrl="http://localhost:9554/OrdersWcfService.svc?xsd=xsd0" />
+    <MetadataFile FileName="OrdersWcfService4.xsd" MetadataType="Schema" ID="d447e72d-3e9c-4bcc-a6ab-0c0965883fcd" SourceId="1" SourceUrl="http://localhost:9554/OrdersWcfService.svc?xsd=xsd4" />
     <MetadataFile FileName="OrdersWcfService3.xsd" MetadataType="Schema" ID="4362ad5c-0d12-4222-ab3b-87d9a3620158" SourceId="1" SourceUrl="http://localhost:9554/OrdersWcfService.svc?xsd=xsd3" />
     <MetadataFile FileName="OrdersWcfService.wsdl" MetadataType="Wsdl" ID="53f34a2c-0ade-411d-b8a2-e424d8d48fb3" SourceId="1" SourceUrl="http://localhost:9554/OrdersWcfService.svc?wsdl" />
   </Metadata>

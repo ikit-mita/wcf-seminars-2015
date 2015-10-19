@@ -142,7 +142,16 @@ namespace BookStore.PayDesk.ViewModels
         {
             using (StartOperation())
             {
-                var validationMessage = OrdersLogic.ValidateOrder(Order, _employee.BranchId);
+                var orderedBookDescriptions = Order.OrderedBooks
+                    .Select(ob => new OrderedBookDescription
+                    {
+                        BookId = ob.BookId,
+                        BookTitle = ob.Book.Title,
+                        Amount = ob.Amount
+                    })
+                    .ToList();
+
+                var validationMessage = OrdersLogic.ValidateOrder(_employee.BranchId, orderedBookDescriptions);
                 if (!validationMessage.IsNullOrEmpty())
                 {
                     ErrorMessage = validationMessage;
@@ -151,7 +160,7 @@ namespace BookStore.PayDesk.ViewModels
 
                 Order.Date = DateTime.Now;
                 Order.Customer = Customer;
-                OrdersLogic.SaveOrder(Order, _employee.BranchId);
+                OrdersLogic.SaveOrder(_employee.BranchId, Customer.Id, _employee.Id, orderedBookDescriptions);
 
                 Close(true);
             }
@@ -184,8 +193,6 @@ namespace BookStore.PayDesk.ViewModels
                     Amount = 1,
                     Book = bookAmount.Book,
                     BookId = bookAmount.BookId,
-                    Order = Order,
-                    OrderId = Order.Id,
                     Price = bookAmount.Book.Price
                 };
 

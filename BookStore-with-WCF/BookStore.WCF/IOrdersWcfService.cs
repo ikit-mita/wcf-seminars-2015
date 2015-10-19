@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
-using System.Text;
+using BookStore.BusinessLogic;
 using BookStore.Model;
 
 namespace BookStore.WCF
@@ -14,10 +11,10 @@ namespace BookStore.WCF
     {
         [OperationContract]
         [ReferencePreservingDataContractFormat]
-        string ValidateOrder(Order order, int branchId);
+        string ValidateOrder(int branchId, List<OrderedBookDescription> orderedBooks);
 
         [OperationContract]
         [ReferencePreservingDataContractFormat]
-        void SaveOrder(Order order, int branchId);
+        Order SaveOrder(int branchId, int customerId, int employeeId, List<OrderedBookDescription> orderedBooks);
     }
 }

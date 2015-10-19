@@ -16,16 +16,16 @@ namespace BookStore.BusinessLogic.WCF.OrdersWcfService {
     public interface IOrdersWcfService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdersWcfService/ValidateOrder", ReplyAction="http://tempuri.org/IOrdersWcfService/ValidateOrderResponse")]
-        string ValidateOrder(BookStore.Model.Order order, int branchId);
+        string ValidateOrder(int branchId, System.Collections.Generic.List<BookStore.BusinessLogic.OrderedBookDescription> orderedBooks);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdersWcfService/ValidateOrder", ReplyAction="http://tempuri.org/IOrdersWcfService/ValidateOrderResponse")]
-        System.Threading.Tasks.Task<string> ValidateOrderAsync(BookStore.Model.Order order, int branchId);
+        System.Threading.Tasks.Task<string> ValidateOrderAsync(int branchId, System.Collections.Generic.List<BookStore.BusinessLogic.OrderedBookDescription> orderedBooks);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdersWcfService/SaveOrder", ReplyAction="http://tempuri.org/IOrdersWcfService/SaveOrderResponse")]
-        void SaveOrder(BookStore.Model.Order order, int branchId);
+        BookStore.Model.Order SaveOrder(int branchId, int customerId, int employeeId, System.Collections.Generic.List<BookStore.BusinessLogic.OrderedBookDescription> orderedBooks);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdersWcfService/SaveOrder", ReplyAction="http://tempuri.org/IOrdersWcfService/SaveOrderResponse")]
-        System.Threading.Tasks.Task SaveOrderAsync(BookStore.Model.Order order, int branchId);
+        System.Threading.Tasks.Task<BookStore.Model.Order> SaveOrderAsync(int branchId, int customerId, int employeeId, System.Collections.Generic.List<BookStore.BusinessLogic.OrderedBookDescription> orderedBooks);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,20 +55,20 @@ namespace BookStore.BusinessLogic.WCF.OrdersWcfService {
                 base(binding, remoteAddress) {
         }
         
-        public string ValidateOrder(BookStore.Model.Order order, int branchId) {
-            return base.Channel.ValidateOrder(order, branchId);
+        public string ValidateOrder(int branchId, System.Collections.Generic.List<BookStore.BusinessLogic.OrderedBookDescription> orderedBooks) {
+            return base.Channel.ValidateOrder(branchId, orderedBooks);
         }
         
-        public System.Threading.Tasks.Task<string> ValidateOrderAsync(BookStore.Model.Order order, int branchId) {
-            return base.Channel.ValidateOrderAsync(order, branchId);
+        public System.Threading.Tasks.Task<string> ValidateOrderAsync(int branchId, System.Collections.Generic.List<BookStore.BusinessLogic.OrderedBookDescription> orderedBooks) {
+            return base.Channel.ValidateOrderAsync(branchId, orderedBooks);
         }
         
-        public void SaveOrder(BookStore.Model.Order order, int branchId) {
-            base.Channel.SaveOrder(order, branchId);
+        public BookStore.Model.Order SaveOrder(int branchId, int customerId, int employeeId, System.Collections.Generic.List<BookStore.BusinessLogic.OrderedBookDescription> orderedBooks) {
+            return base.Channel.SaveOrder(branchId, customerId, employeeId, orderedBooks);
         }
         
-        public System.Threading.Tasks.Task SaveOrderAsync(BookStore.Model.Order order, int branchId) {
-            return base.Channel.SaveOrderAsync(order, branchId);
+        public System.Threading.Tasks.Task<BookStore.Model.Order> SaveOrderAsync(int branchId, int customerId, int employeeId, System.Collections.Generic.List<BookStore.BusinessLogic.OrderedBookDescription> orderedBooks) {
+            return base.Channel.SaveOrderAsync(branchId, customerId, employeeId, orderedBooks);
         }
     }
 }

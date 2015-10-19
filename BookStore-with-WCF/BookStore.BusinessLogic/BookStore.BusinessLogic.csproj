@@ -45,6 +45,7 @@
     <Compile Include="IBusinessLogic.cs" />
     <Compile Include="IOrdersLogic.cs" />
     <Compile Include="IUsersLogic.cs" />
+    <Compile Include="OrderedBookDescription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

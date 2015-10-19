@@ -88,6 +88,7 @@
     <None Include="Properties\DataSources\BookStore.Model.BookAmount.datasource" />
     <None Include="Properties\DataSources\BookStore.Model.Customer.datasource" />
     <None Include="Properties\DataSources\BookStore.Model.Employee.datasource" />
+    <None Include="Properties\DataSources\BookStore.Model.Order.datasource" />
     <None Include="Properties\DataSources\BookStore.Model.User.datasource" />
     <None Include="Service References\BooksWcfService\BooksWcfService.wsdl" />
     <None Include="Service References\BooksWcfService\BooksWcfService.xsd">
@@ -113,6 +114,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\OrdersWcfService\OrdersWcfService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrdersWcfService\OrdersWcfService4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\UsersWcfService\UsersWcfService.wsdl" />

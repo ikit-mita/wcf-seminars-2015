@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Composition;
+﻿using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using BookStore.BusinessLogic.WCF.OrdersWcfService;
 using BookStore.Model;
 
@@ -16,14 +17,15 @@ namespace BookStore.BusinessLogic.WCF
             ServiceClient.Close();
         }
 
-        public string ValidateOrder(Order order, int branchId)
+        public string ValidateOrder(int branchId, List<OrderedBookDescription> orderedBooks)
         {
-            return ServiceClient.ValidateOrder(order, branchId);
+            return ServiceClient.ValidateOrder(branchId, orderedBooks);
         }
 
-        public void SaveOrder(Order order, int branchId)
+        public Order SaveOrder(int branchId, int customerId, int employeeId, List<OrderedBookDescription> orderedBooks)
         {
-            ServiceClient.SaveOrder(order, branchId);
+            var order = ServiceClient.SaveOrder(branchId, customerId, employeeId, orderedBooks);
+            return order;
         }
     }
 }
